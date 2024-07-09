@@ -16,19 +16,19 @@ app.use(routes);
 
 
 //CRUD - GET /notes
-app.get("/notes", (req, res) => {
+app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, "./public/notes.html"));
     res.status(200);
     console.log ("notes retrieved");
 });
 
 //CRUD - "*" aka index.html file
-app.get("*", (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
 //CRUD - GET /api/notes
-app.get("/api/notes", (req, res) => {
+app.get('/api/notes', (req, res) => {
     fs.readFile("./db/db.json", "utf8", (err, data) => {
         if (err) {
             console.log(err);
@@ -36,6 +36,14 @@ app.get("/api/notes", (req, res) => {
         }
         res.json(JSON.parse(data));
     })
+});
+
+
+//CRUD - POST /api/notes
+app.post('/api/notes', (req, res) => {
+    fs.readFile(
+        //POST function
+    )
 });
 
 
