@@ -16,7 +16,7 @@ app.use(routes);
 
 
 //CRUD - GET /notes
-app.get("./notes.html", (req, res) => {
+app.get("/notes", (req, res) => {
     res.sendFile(path.join(__dirname, "./public/notes.html"));
     res.status(200);
     console.log ("notes retrieved");
@@ -25,10 +25,10 @@ app.get("./notes.html", (req, res) => {
 //CRUD - "*" aka index.html file
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "./public/index.html"));
-})
+});
 
 //CRUD - GET /api/notes
-app.get("./api/notes", (req, res) => {
+app.get("/api/notes", (req, res) => {
     fs.readFile("./db/db.json", "utf8", (err, data) => {
         if (err) {
             console.log(err);
@@ -42,7 +42,7 @@ app.get("./api/notes", (req, res) => {
 
 
 
-//console log the port number ti know servier is running
+//console log the port number ti know server is running
 app.listen(PORT, () => {
     console.log(`App listening on PORT ${PORT}`)
 });
