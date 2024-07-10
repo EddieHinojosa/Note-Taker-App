@@ -10,8 +10,8 @@ app.use(express.static("./public"));
 
 
 //MiddleWare to handle data parsing
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
 
 
 
@@ -22,10 +22,7 @@ app.get('/notes', (req, res) => {
     console.log ("notes retrieved");
 });
 
-//CRUD - "*" aka index.html file
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, "./public/index.html"));
-});
+
 
 //CRUD - GET /api/notes
 app.get('/api/notes', (req, res) => {
@@ -37,6 +34,14 @@ app.get('/api/notes', (req, res) => {
         res.json(JSON.parse(data));
     })
 });
+
+
+//CRUD - "*" aka index.html file
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, "./public/index.html"));
+});
+
+
 
 
 //CRUD - POST /api/notes
