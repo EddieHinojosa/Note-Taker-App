@@ -44,18 +44,18 @@ app.post('/api/notes', (req, res) => {
     fs.readFile("./db/db.json", "utf8", (err, data) => {
         if (err) {
             console.log(err);
-            return res.status(500).json({message : `unable to retrieve notes`});
+            return;
         }
-        let notes = JSON.parse(data);
-        let newNote = req.body;
-        newNote.id = notes.length + 1;
-        notes.push(newNote);
-        fs.writeFile("./db/db.json", JSON.stringify(notes), (err) => {
+        
+        const notesArr = JSON.parse(data);
+        
+        notesArr.push(req.body);
+        fs.writeFile("./db/db.json", JSON.stringify(notesArr), (err) => {
             if (err) {
                 console.log(err);
-                return res.status(500).json({message : `unable to save notes`});
+                return;
             }
-            res.json(newNote);
+            res.json({message : `Note added`});
         })
     })
 });
