@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //setting static access to all the files in the public folder
-app.use(express.static("public"));
+app.use(express.static("./public"));
 
 
 //CRUD - GET /notes
